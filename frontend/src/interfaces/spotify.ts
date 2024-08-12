@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { SearchResponse, SearchResult } from "../types/searchTypes";
 
-const apiUrl: string = `${import.meta.env.VITE_API_URL}`
+const apiUrl: string = import.meta.env.VITE_API_URL
 /**
  * Searches for music on Spotify using the provided query.
  *
@@ -11,8 +12,12 @@ const apiUrl: string = `${import.meta.env.VITE_API_URL}`
  * const results = await searchSpotify('The Beatles');
  * console.log(results); // Output: { ... } (search results object)
  */
-export const searchSpotify = async (query: string): Promise<object> => {
-    return await axios.get(`${apiUrl}&query=${query}`);
+export const searchSpotify = async (query: string): Promise<SearchResult[]> => {
+    const response: AxiosResponse<SearchResponse> = await axios.post<SearchResponse>(`${apiUrl}/search`, {
+        query: query
+    });
+    
+    return response.data.result
 }
 
 /**
@@ -27,5 +32,7 @@ export const searchSpotify = async (query: string): Promise<object> => {
  * console.log(musicData);
  */
 export const downloadFromSpotify = async (musicLink: string): Promise<object> => {
-    return await axios.get(`${apiUrl}&link=${musicLink}`);
+    return await axios.get(`${apiUrl}/download`, {
+        url: musicLink
+    });
 }

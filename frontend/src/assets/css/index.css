@@ -6,6 +6,14 @@ body {
   background: #17153b;
 }
 
+#root {
+  box-sizing: border-box;
+  max-width: 1280px;
+  display: flow-root;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 .ubuntu-light {
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;
