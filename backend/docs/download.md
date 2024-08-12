@@ -68,7 +68,7 @@ Provide a url or music id to get download info.
 
 ```json
 {
-    message: "error message"
+    "message": "error message"
 }
 ```
 

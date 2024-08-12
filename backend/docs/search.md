@@ -72,7 +72,7 @@ Provide a query to search.
 
 ```json
 {
-    message: "error message"
+    "message": "error message"
 }
 ```
 
