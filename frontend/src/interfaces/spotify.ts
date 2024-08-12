@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { SearchResponse, SearchResult } from "../types/searchTypes";
+import { DownloadResponse, DownloadResult, SearchResponse, SearchResult } from "../types/searchTypes";
 
 const apiUrl: string = import.meta.env.VITE_API_URL
 /**
@@ -16,7 +16,7 @@ export const searchSpotify = async (query: string): Promise<SearchResult[]> => {
     const response: AxiosResponse<SearchResponse> = await axios.post<SearchResponse>(`${apiUrl}/search`, {
         query: query
     });
-    
+
     return response.data.result
 }
 
@@ -31,8 +31,10 @@ export const searchSpotify = async (query: string): Promise<SearchResult[]> => {
  * const musicData = await downloadFromSpotify(musicLink);
  * console.log(musicData);
  */
-export const downloadFromSpotify = async (musicLink: string): Promise<object> => {
-    return await axios.get(`${apiUrl}/download`, {
+export const downloadFromSpotify = async (musicLink: string): Promise<DownloadResult> => {
+    const response: AxiosResponse<DownloadResponse> = await axios.post<DownloadResponse>(`${apiUrl}/download`, {
         url: musicLink
     });
+
+    return response.data.result
 }

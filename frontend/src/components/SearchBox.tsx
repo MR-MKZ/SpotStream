@@ -30,18 +30,8 @@ const SearchBox: FC<props> = ({ setsearchResult, searchResultState }) => {
   useEffect(() => {
     if (!searchIsPending && searchIsSuccess) {
       setsearchResult(searchResult);
-    } else if (searchIsError) {
-      setsearchResult([]);
-      console.log(searchError);
     }
-  }, [
-    searchIsPending,
-    searchIsSuccess,
-    searchIsError,
-    searchError,
-    searchResult,
-    setsearchResult,
-  ]);
+  }, [searchIsPending, searchIsSuccess, searchIsError, searchError, searchResult, setsearchResult]);
   return (
     <div className="w-full sm:w-[300px] h-max flex flex-col gap-5 bg-theme-300 rounded-md border border-theme-200 p-4">
       <input

@@ -30,3 +30,28 @@ export interface UseSearchSpotifyReturn {
     searchIsError: boolean;
     searchError: Error | null;
 }
+
+export interface DownloadResult {
+    success: boolean;
+    id: string;
+    artists: string;
+    title: string;
+    album: string;
+    cover: string;
+    isrc: string;
+    releaseDate: string;
+    link: string;
+}
+
+export interface DownloadResponse {
+    result: DownloadResult;
+}
+
+export interface UseDownloadFromSpotifyReturn {
+    downloadFromSpotify: UseMutateFunction<DownloadResult, Error, string, unknown>;
+    downloadResult: DownloadResult;
+    downloadIsPending: boolean;
+    downloadIsSuccess: boolean;
+    downloadIsError: boolean;
+    downloadError: Error | null;
+}
