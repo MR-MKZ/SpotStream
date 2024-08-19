@@ -2,6 +2,7 @@ import { FC, useEffect, useState, Dispatch, SetStateAction } from "react";
 import { DownloadResult, SearchResult } from "../types/searchTypes";
 import timeConverter from "../utils/timeConverter";
 import useDownloadFromSpotify from "../hooks/useDownloadFromSpotify";
+import MusicPlayer from "./MusicPlayer";
 
 interface SearchResultBoxProps {
   searchResults: SearchResult[];
@@ -56,11 +57,14 @@ const SearchResultBox: FC<SearchResultBoxProps> = ({
               <h2 className="text-lg">{result.name}</h2>
               <p className="text-theme-100 text-sm">{artists.join(" & ")}</p>
             </div>
-            <audio
+            {/* <audio
               src={result.preview_url}
               className="mx-auto w-full"
               controls
-            ></audio>
+            ></audio> */}
+            <MusicPlayer
+              musicUrl={result.preview_url}
+            />
             <button
               onClick={() => handleGetDownloadInfo(result.href)}
               className="bg-theme-200 text-white p-2 rounded-md disabled:cursor-wait"

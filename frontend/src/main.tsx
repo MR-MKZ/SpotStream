@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.min.css"
+import 'react-h5-audio-player/lib/styles.css';
 
 const queryClient = new QueryClient();
 
